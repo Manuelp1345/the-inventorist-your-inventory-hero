@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-export async function GET(req: NextResponse) {
+export async function GET(req: Request) {
   const cookieStore = cookies();
   cookieStore.delete("token");
 
-  return NextResponse.redirect(new URL("/", req.url));
+  return Response.redirect(new URL("/", req.url));
 }
