@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   const body = await req.json();
   let response;
   try {
-    response = await axios.post(`${API_URL}/product/creates`, body, {
+    response = await axios.post(`${API_URL}/product/bulk`, body, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
