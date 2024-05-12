@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, Input, Typography } from "@mui/material";
+import { Alert, Box, Button, Input, Typography } from "@mui/material";
 import { useRouter, useSearchParams } from "next/navigation";
 import logo from "../../assets/img/logo-without-background.webp";
 import Image from "next/image";
@@ -10,7 +10,7 @@ export default function Home({ params }: { params: { id: string } }) {
   const route = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
-
+  const [update, setUpdate] = useState(false);
   const [data, setData] = useState({
     id: params.id,
     password: "",
@@ -35,6 +35,11 @@ export default function Home({ params }: { params: { id: string } }) {
       }
       return alert(error.response?.data);
     }
+    setUpdate(true);
+
+    return setTimeout(() => {
+      route.push("/");
+    }, 3000);
   };
 
   return (
@@ -84,6 +89,11 @@ export default function Home({ params }: { params: { id: string } }) {
               setData({ ...data, confirmPassword: e.target.value })
             }
           />
+          {update && (
+            <Alert className="bg-color1 text-white" severity="success">
+              Password Updated Successfully
+            </Alert>
+          )}
           <Button
             onClick={resetPassword}
             className="p-[8px] rounded-md bg-color3 text-white"
