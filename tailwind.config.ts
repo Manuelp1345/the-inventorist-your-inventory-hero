@@ -6,10 +6,14 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/modules/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
+        color1: "#2E334D",
+        color2: "#411D28",
+        color3: "#ED4C4B",
         blue: "#1fb6ff",
         purple: "#7e5bef",
         pink: "#ff49db",
