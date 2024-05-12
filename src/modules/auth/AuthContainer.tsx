@@ -3,6 +3,7 @@ import {
   Alert,
   Box,
   Button,
+  CircularProgress,
   Input,
   TextField,
   Typography,
@@ -139,7 +140,6 @@ const AuthContainer = () => {
   const handleRegister = async () => {
     setLoading(true);
     const { userName, email, password, confirmPassword } = data.register;
-    setLoading(false);
     if (password !== confirmPassword) {
       return setErrors({
         ...errors,
@@ -229,6 +229,8 @@ const AuthContainer = () => {
       return setError((error as any)?.response?.data);
     }
     if (reponse.status === 200) {
+      setLoading(false);
+
       setData({
         login: {
           userName: userName,
@@ -245,7 +247,6 @@ const AuthContainer = () => {
           send: false,
         },
       });
-      setLoading(false);
 
       return setAuthType("login");
     }
@@ -366,7 +367,7 @@ const AuthContainer = () => {
               disabled={loading}
               className="p-[8px] rounded-md bg-color3 text-white"
             >
-              Login
+              {loading ? <CircularProgress color="inherit" /> : "Login"}
             </Button>
 
             <Typography className="text-[14px] text-center">
@@ -545,7 +546,7 @@ const AuthContainer = () => {
               disabled={loading}
               className="p-[8px] rounded-md bg-color3 text-white"
             >
-              Register
+              {loading ? <CircularProgress color="inherit" /> : "Register"}
             </Button>
 
             <Typography className="text-[14px] text-center">
@@ -607,7 +608,7 @@ const AuthContainer = () => {
               disabled={loading}
               className="p-[8px] rounded-md bg-color3 text-white"
             >
-              Reset
+              {loading ? <CircularProgress color="inherit" /> : "Reset"}
             </Button>
 
             <Typography className="text-[14px] text-center">
